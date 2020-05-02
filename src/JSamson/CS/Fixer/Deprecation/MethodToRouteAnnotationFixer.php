@@ -12,7 +12,7 @@ final class MethodToRouteAnnotationFixer extends AbstractFixer
 {
     public function getName(): string
     {
-        return 'App/'.parent::getName();
+        return 'Jsamson/'.parent::getName();
     }
 
     public function getDefinition(): FixerDefinition

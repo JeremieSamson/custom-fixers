@@ -12,7 +12,7 @@ final class SensioToSymfonyRouteFixer extends AbstractFixer
 {
     public function getName()
     {
-        return 'App/'.parent::getName();
+        return 'Jsamson/'.parent::getName();
     }
 
     public function getDefinition()
