@@ -2,7 +2,7 @@
 
 namespace JSamson\CS\Fixer\Deprecation;
 
-use PhpCsFixer\AbstractFixer;
+use JSamson\CS\Fixer\AbstractFixer;
 use PhpCsFixer\FixerDefinition\CodeSample;
 use PhpCsFixer\FixerDefinition\FixerDefinition;
 use PhpCsFixer\Tokenizer\Token;
@@ -10,11 +10,6 @@ use PhpCsFixer\Tokenizer\Tokens;
 
 final class MethodToRouteAnnotationFixer extends AbstractFixer
 {
-    public function getName(): string
-    {
-        return 'Jsamson/'.parent::getName();
-    }
-
     public function getDefinition(): FixerDefinition
     {
         return new FixerDefinition(
