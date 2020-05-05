@@ -1,4 +1,4 @@
-name: PHPCSFixer
+name: CI
 
 on:
   pull_request:
@@ -17,9 +17,9 @@ jobs:
       - name: Run php-cs-fixer
         run: ./vendor/bin/php-cs-fixer fix
 
-      - uses: stefanzweifel/git-auto-commit-action@v2.1.0
-        with:
-          commit_message: Apply php-cs-fixer changes
-          branch: ${{ github.head_ref }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  phpunit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: php-actions/composer@v1
+      - uses: php-actions/phpunit@v1
