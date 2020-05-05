@@ -1,5 +1,7 @@
 # Custom fixers for [PHP-CS-Fixer](https://github.com/FriendsOfPHP/PHP-CS-Fixer)
 
+[![Actions Status](https://github.com/JeremieSamson/custom-fixers/workflows/PHPCSFixer/badge.svg)](https://github.com/JeremieSamson/custom-fixers/actions)
+
 # Installation
 
 ```bash
