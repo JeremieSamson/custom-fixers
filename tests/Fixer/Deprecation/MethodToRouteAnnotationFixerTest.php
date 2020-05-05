@@ -40,7 +40,6 @@ class MethodToRouteAnnotationFixerTest extends TestCase
 
         $this->assertFalse(strpos($tokens->generateCode(), '@Method'));
         foreach ($routesArgsExpected as $routeArgsExpected) {
-            //dd($tokens->generateCode());
             $this->assertTrue(false !== strpos($tokens->generateCode(), $routeArgsExpected));
         }
     }
