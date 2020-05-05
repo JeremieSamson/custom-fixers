@@ -26,3 +26,11 @@ Remove declare(strict_types=1), auto-generated comments, and abortIf calls from 
 ### To Do
 
 - [ ] Add tests 
+
+## [Jsamson/response_code](doc/response_code.md)
+
+Replace int wrote in Response to const from Response class in HttpFoundation Symfony component
+
+### To Do
+
+- [ ] Add tests 

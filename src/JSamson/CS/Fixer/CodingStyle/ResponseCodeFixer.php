@@ -15,7 +15,7 @@ final class ResponseCodeFixer extends AbstractFixer
     public function getDefinition(): FixerDefinition
     {
         return new FixerDefinition(
-            'Replace int passed in Response to const from Response class in HttpFoundation Symfony component',
+            'Replace int wrote in Response to const from Response class in HttpFoundation Symfony component',
             [
                 new CodeSample(
                     '<?php 
