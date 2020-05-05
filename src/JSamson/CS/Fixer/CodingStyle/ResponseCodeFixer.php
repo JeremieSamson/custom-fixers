@@ -10,7 +10,7 @@ use PhpCsFixer\Tokenizer\Tokens;
 
 final class ResponseCodeFixer extends AbstractFixer
 {
-    private const CONCERNED_CLASSES = ["Response", "JsonResponse"];
+    private const CONCERNED_CLASSES = ['Response', 'JsonResponse'];
 
     public function getDefinition(): FixerDefinition
     {
@@ -55,18 +55,18 @@ public function index(): JsonResponse
                 continue;
             }
 
-            if ($token->isGivenKind(\T_RETURN) && in_array($tokens[$index+4]->getContent(), self::CONCERNED_CLASSES)) {
+            if ($token->isGivenKind(\T_RETURN) && in_array($tokens[$index + 4]->getContent(), self::CONCERNED_CLASSES)) {
                 $currentIndex = $index;
                 $endOfReturn = $tokens->getNextTokenOfKind($index, [';']);
-var_dump($currentIndex, $endOfReturn);
-                for($j=$currentIndex ; $j<=$endOfReturn ; $j++) {
+                var_dump($currentIndex, $endOfReturn);
+                for ($j = $currentIndex; $j <= $endOfReturn; ++$j) {
                     var_dump($j, $tokens[$j]->getName());
                     if (\T_LNUMBER === constant($tokens[$j]->getName())) {
-                        dd("ici");
+                        dd('ici');
                     }
                 }
 
-                die;
+                exit;
             }
         }
     }

@@ -5,6 +5,10 @@ namespace Fixer\CodingStyle;
 use JSamson\CS\Fixer\CodingStyle\ResponseCodeFixer;
 use PhpCsFixer\Tests\TestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 class ResponseCodeFixerTest extends TestCase
 {
     /**

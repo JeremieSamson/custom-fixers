@@ -10,9 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-
-      - name: Install
-        run: composer install
+      - uses: php-actions/composer@v1
 
       - name: Run php-cs-fixer
         run: ./vendor/bin/php-cs-fixer fix --dry-run --diff
