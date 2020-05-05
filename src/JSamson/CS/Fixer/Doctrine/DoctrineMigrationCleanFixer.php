@@ -55,7 +55,7 @@ final class Version20190306110954 extends AbstractMigration
 
     public function supports(\SplFileInfo $file): bool
     {
-        return preg_match("/^Version\d{14}/", $file->getBasename());
+        return preg_match('/^Version\\d{14}/', $file->getBasename());
     }
 
     public function isCandidate(Tokens $tokens): bool

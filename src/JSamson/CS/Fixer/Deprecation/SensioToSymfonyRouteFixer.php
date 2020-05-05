@@ -51,8 +51,8 @@ namespace AppBundle\Controller;
         $useTokenIndexEnd = 0;
 
         /**
-         * @var  $index
-         * @var Token $token
+         * @var $index
+         * @var Token  $token
          */
         foreach ($tokens as $index => $token) {
             if (!$token->isGivenKind([\T_USE, \T_DOC_COMMENT])) {
@@ -82,14 +82,15 @@ namespace AppBundle\Controller;
                     $useTokenIndexEnd
                 );
 
-                $tokens[$useTokenIndexStart]->setContent("use Symfony\Component\Routing\Annotation\Route;\n");
+                $tokens[$useTokenIndexStart]->setContent("use Symfony\\Component\\Routing\\Annotation\\Route;\n");
             }
         }
     }
 
     private function isSensioBundleFrameworkExtraBundleConfigurationRoute(array $tokens)
     {
-        $namespace = implode('',
+        $namespace = implode(
+            '',
             array_map(
                 function ($token) {
                     return $token->getContent();

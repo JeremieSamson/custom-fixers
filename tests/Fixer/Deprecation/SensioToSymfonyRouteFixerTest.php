@@ -6,6 +6,10 @@ use JSamson\CS\Fixer\Deprecation\SensioToSymfonyRouteFixer;
 use PhpCsFixer\Tests\TestCase;
 use PhpCsFixer\Tokenizer\Tokens;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 class SensioToSymfonyRouteFixerTest extends TestCase
 {
     /**
@@ -18,13 +22,13 @@ class SensioToSymfonyRouteFixerTest extends TestCase
 
     public function provideTestSupportsCases(): \Generator
     {
-       yield ['ControllerFoo.php', false];
-       yield ['FooController.php', true];
-       yield ['FooTest.php', false];
-       yield ['TestFoo.php', false];
-       yield ['FooControllerBar.php', false];
-       yield ['BarControllerFoo.php', false];
-       yield ['FooBarController.php', true];
+        yield ['ControllerFoo.php', false];
+        yield ['FooController.php', true];
+        yield ['FooTest.php', false];
+        yield ['TestFoo.php', false];
+        yield ['FooControllerBar.php', false];
+        yield ['BarControllerFoo.php', false];
+        yield ['FooBarController.php', true];
     }
 
     /**
@@ -40,8 +44,8 @@ class SensioToSymfonyRouteFixerTest extends TestCase
 
     public function provideTestApplyFixCases(): \Generator
     {
-        yield 'Test when use is in the middle' =>[Tokens::fromCode(
-<<<'PHP'
+        yield 'Test when use is in the middle' => [Tokens::fromCode(
+            <<<'PHP'
 <?php
 
 namespace Foo\Bar;
@@ -57,7 +61,7 @@ class Foo
 PHP
         )];
 
-        yield 'Test when use is first' =>[Tokens::fromCode(
+        yield 'Test when use is first' => [Tokens::fromCode(
             <<<'PHP'
 <?php
 

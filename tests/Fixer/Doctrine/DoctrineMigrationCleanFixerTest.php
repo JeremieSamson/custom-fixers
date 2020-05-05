@@ -2,11 +2,13 @@
 
 namespace Fixer\Doctrine;
 
-use JSamson\CS\Fixer\Deprecation\SensioToSymfonyRouteFixer;
 use JSamson\CS\Fixer\Doctrine\DoctrineMigrationCleanFixer;
 use PhpCsFixer\Tests\TestCase;
-use PhpCsFixer\Tokenizer\Tokens;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 class DoctrineMigrationCleanFixerTest extends TestCase
 {
     /**
