@@ -5,7 +5,6 @@ namespace JSamson\CS\Fixer\Deprecation;
 use JSamson\CS\Fixer\AbstractFixer;
 use PhpCsFixer\FixerDefinition\CodeSample;
 use PhpCsFixer\FixerDefinition\FixerDefinition;
-use PhpCsFixer\Tokenizer\Token;
 use PhpCsFixer\Tokenizer\Tokens;
 
 final class SensioToSymfonyRouteFixer extends AbstractFixer
@@ -50,10 +49,6 @@ namespace AppBundle\Controller;
         $useTokenIndexStart = 0;
         $useTokenIndexEnd = 0;
 
-        /**
-         * @var  $index
-         * @var Token $token
-         */
         foreach ($tokens as $index => $token) {
             if (!$token->isGivenKind([\T_USE, \T_DOC_COMMENT])) {
                 continue;
@@ -82,14 +77,15 @@ namespace AppBundle\Controller;
                     $useTokenIndexEnd
                 );
 
-                $tokens[$useTokenIndexStart]->setContent("use Symfony\Component\Routing\Annotation\Route;\n");
+                $tokens[$useTokenIndexStart]->setContent("use Symfony\\Component\\Routing\\Annotation\\Route;\n");
             }
         }
     }
 
     private function isSensioBundleFrameworkExtraBundleConfigurationRoute(array $tokens)
     {
-        $namespace = implode('',
+        $namespace = implode(
+            '',
             array_map(
                 function ($token) {
                     return $token->getContent();

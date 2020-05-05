@@ -71,11 +71,11 @@ public function helloWorldAction(){
             $methodAnnotationStart,
             $methodAnnotationEnd - $methodAnnotationStart
         ));
-        $content =  $this->removeMethodLine($content, $methodAnnotationEnd);
+        $content = $this->removeMethodLine($content, $methodAnnotationEnd);
         $routeAnnotationIndexes = [];
         $offset = 0;
 
-        for($i=0 ; $i<substr_count($content, '@Route') ; $i++) {
+        for ($i = 0; $i < substr_count($content, '@Route'); ++$i) {
             $routeAnnotationStart = strpos($content, '@Route', $offset);
             $offset += $routeAnnotationStart + 1;
 
@@ -108,7 +108,7 @@ public function helloWorldAction(){
             $routeAnnotationEnd = strpos($content, ')', $routeAnnotationStart);
         }
 
-        $routeLine = substr($content, $routeAnnotationStart, $routeAnnotationEnd - $routeAnnotationStart+1);
+        $routeLine = substr($content, $routeAnnotationStart, $routeAnnotationEnd - $routeAnnotationStart + 1);
 
         $newRouteLine = substr_count($routeLine, PHP_EOL) >= 1
             ? $this->addMethodArgInMultiLineRoute($routeLine, $methodsToMove)
@@ -123,7 +123,7 @@ public function helloWorldAction(){
         $routeLine = str_replace('*', '', $routeLine);
         $routeLine = str_replace(PHP_EOL, '', $routeLine);
         $routeLine = str_replace(' ', '', $routeLine);
-        $args = explode(',', substr($routeLine, $start = strpos($routeLine, '(')+1, strpos($routeLine, ')') - $start));
+        $args = explode(',', substr($routeLine, $start = strpos($routeLine, '(') + 1, strpos($routeLine, ')') - $start));
 
         $routeCleaned = '@Route('.PHP_EOL;
 
@@ -138,10 +138,10 @@ public function helloWorldAction(){
 
     private function addMethodArgInSingleLineRoute(string $routeLine, array $methodsToMove): string
     {
-
         return str_replace(
             $routeLine = str_replace(')', '', $routeLine),
-            $routeLine.', methods={'.implode(', ', $methodsToMove).'})', $routeLine
+            $routeLine.', methods={'.implode(', ', $methodsToMove).'})',
+            $routeLine
         );
     }
 

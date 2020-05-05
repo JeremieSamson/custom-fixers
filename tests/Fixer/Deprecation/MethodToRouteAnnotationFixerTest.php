@@ -6,6 +6,10 @@ use JSamson\CS\Fixer\Deprecation\MethodToRouteAnnotationFixer;
 use PhpCsFixer\Tests\TestCase;
 use PhpCsFixer\Tokenizer\Tokens;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 class MethodToRouteAnnotationFixerTest extends TestCase
 {
     /**
@@ -18,13 +22,13 @@ class MethodToRouteAnnotationFixerTest extends TestCase
 
     public function provideTestSupportsCases(): \Generator
     {
-       yield ['ControllerFoo.php', false];
-       yield ['FooController.php', true];
-       yield ['FooTest.php', false];
-       yield ['TestFoo.php', false];
-       yield ['FooControllerBar.php', false];
-       yield ['BarControllerFoo.php', false];
-       yield ['FooBarController.php', true];
+        yield ['ControllerFoo.php', false];
+        yield ['FooController.php', true];
+        yield ['FooTest.php', false];
+        yield ['TestFoo.php', false];
+        yield ['FooControllerBar.php', false];
+        yield ['BarControllerFoo.php', false];
+        yield ['FooBarController.php', true];
     }
 
     /**
@@ -43,7 +47,7 @@ class MethodToRouteAnnotationFixerTest extends TestCase
 
     public function provideTestApplyFixCases(): \Generator
     {
-        yield 'Simple case with route and annotation with one method' =>[Tokens::fromCode(
+        yield 'Simple case with route and annotation with one method' => [Tokens::fromCode(
             <<<'PHP'
 <?php
 
@@ -62,10 +66,10 @@ class Bar
 }
 PHP
         ),
-            ['@Route("/fooBar", name="fooBar", methods={"GET"})']
+            ['@Route("/fooBar", name="fooBar", methods={"GET"})'],
         ];
 
-        yield 'Simple case with route and annotation with multiples methods' =>[Tokens::fromCode(
+        yield 'Simple case with route and annotation with multiples methods' => [Tokens::fromCode(
             <<<'PHP'
 <?php
 
@@ -84,10 +88,10 @@ class Bar
 }
 PHP
         ),
-            ['@Route("/fooBar", name="fooBar", methods={"GET", "POST"})']
+            ['@Route("/fooBar", name="fooBar", methods={"GET", "POST"})'],
         ];
 
-        yield 'Simple case with route with option arg and annotation with one method' =>[Tokens::fromCode(
+        yield 'Simple case with route with option arg and annotation with one method' => [Tokens::fromCode(
             <<<'PHP'
 <?php
 
@@ -106,10 +110,10 @@ class Bar
 }
 PHP
         ),
-            ['@Route("/fooBar", name="fooBar", options={"expose"=true}, methods={"GET"})']
+            ['@Route("/fooBar", name="fooBar", options={"expose"=true}, methods={"GET"})'],
         ];
 
-        yield 'Simple case with route with option arg and annotation with multiple methods' =>[Tokens::fromCode(
+        yield 'Simple case with route with option arg and annotation with multiple methods' => [Tokens::fromCode(
             <<<'PHP'
 <?php
 
@@ -128,10 +132,10 @@ class Bar
 }
 PHP
         ),
-            ['@Route("/fooBar", name="fooBar", options={"expose"=true}, methods={"GET", "POST"})']
+            ['@Route("/fooBar", name="fooBar", options={"expose"=true}, methods={"GET", "POST"})'],
         ];
 
-        yield 'Case with mulitple routes and annotation with one method' =>[Tokens::fromCode(
+        yield 'Case with mulitple routes and annotation with one method' => [Tokens::fromCode(
             <<<'PHP'
 <?php
 
@@ -154,10 +158,10 @@ PHP
             [
                 '@Route("/fooBar", name="fooBar", methods={"GET"})',
                 '@Route("/{locale}/fooBar", name="fooBar_locale", methods={"GET"})',
-            ]
+            ],
         ];
 
-        yield 'Case with mulitple routes on multiple lines and annotation with one method' =>[Tokens::fromCode(
+        yield 'Case with mulitple routes on multiple lines and annotation with one method' => [Tokens::fromCode(
             <<<'PHP'
 <?php
 
@@ -200,7 +204,7 @@ PHP,
      *     methods={"GET"},
      * )
 PHP
-            ]
+            ],
         ];
     }
 }
