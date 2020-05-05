@@ -15,11 +15,13 @@ jobs:
         run: composer install
 
       - name: Run php-cs-fixer
-        run: ./vendor/bin/php-cs-fixer fix
+        run: ./vendor/bin/php-cs-fixer fix --dry-run --diff
 
   phpunit:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
       - uses: php-actions/composer@v1
-      - uses: php-actions/phpunit@v1
+
+      - name: Run phpunit
+        run: ./vendor/bin/phpunit tests --colors

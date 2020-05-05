@@ -3,7 +3,6 @@
 namespace Fixer\Deprecation;
 
 use JSamson\CS\Fixer\Deprecation\MethodToRouteAnnotationFixer;
-use JSamson\CS\Fixer\Deprecation\ResponseCodeFixer;
 use PhpCsFixer\Tests\TestCase;
 use PhpCsFixer\Tokenizer\Tokens;
 
@@ -18,7 +17,7 @@ class MethodToRouteAnnotationFixerTest extends TestCase
      */
     public function testSupports(string $fileName, bool $expected): void
     {
-        $this->assertEquals($expected, (new ResponseCodeFixer())->supports(new \SplFileInfo($fileName)));
+        $this->assertEquals($expected, (new MethodToRouteAnnotationFixer())->supports(new \SplFileInfo($fileName)));
     }
 
     public function provideTestSupportsCases(): \Generator
