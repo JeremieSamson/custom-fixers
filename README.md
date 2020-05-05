@@ -22,3 +22,7 @@ Remove deprecated `@Method` annotation and move content to `@Route` args
 ## [Jsamson/doctrine_migration_clean](doc/doctrine_migration_clean.md)
 
 Remove declare(strict_types=1), auto-generated comments, and abortIf calls from doctrine migration generated files.
+
+### To Do
+
+- [ ] Add tests 

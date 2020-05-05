@@ -9,7 +9,7 @@ $config = PhpCsFixer\Config::create()
        
     ])
     ->registerCustomFixers([
-        new JSamson\CS\Fixer\Deprecation\MethodToRouteAnnotationFixer,
+        new JSamson\CS\Fixer\Deprecation\ResponseCodeFixer,
     ])
 ;
 ```
