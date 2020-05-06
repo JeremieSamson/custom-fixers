@@ -3,50 +3,17 @@ name: CI
 on: pull_request
 
 jobs:
-  build:
+  tests:
     runs-on: [ubuntu-latest]
     steps:
       - uses: actions/checkout@v1
       - uses: php-actions/composer@v1
 
-      - name: Upload build
-        uses: actions/upload-artifact@v1
-        with:
-          name: build-artifact
-          path: ./
-
-  php-cs-fixer:
-    runs-on: ubuntu-latest
-    needs: [build]
-    steps:
-      - uses: actions/download-artifact@v1
-        with:
-          name: build-artifact
-          path: ./
-
       - name: Run php-cs-fixer
         run: ./vendor/bin/php-cs-fixer fix --dry-run --diff
 
-  phpunit:
-    runs-on: ubuntu-latest
-    needs: [build]
-    steps:
-      - uses: actions/download-artifact@v1
-        with:
-          name: build-artifact
-          path: ./
-
       - name: Run phpunit
         run: ./vendor/bin/phpunit tests --colors
-
-  psalm:
-    runs-on: ubuntu-latest
-    needs: [build]
-    steps:
-      - uses: actions/download-artifact@v1
-        with:
-          name: build-artifact
-          path: ./
 
       - name: Run psalm
         run: ./vendor/bin/psalm
