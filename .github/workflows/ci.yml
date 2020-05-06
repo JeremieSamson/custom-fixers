@@ -1,25 +1,33 @@
 name: CI
 
-on:
-  pull_request:
-    paths:
-      - '**.php'
+on: pull_request
 
 jobs:
+  build:
+    runs-on: [ubuntu-latest]
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Cache PHP dependencies
+        uses: actions/cache@v1
+        with:
+          path: vendor
+          key: ${{ runner.OS }}-build-${{ hashFiles('**/composer.lock') }}
+
   php-cs-fixer:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-
-      - name: Install
-        run: composer install
+      - uses: php-actions/composer@v1
 
       - name: Run php-cs-fixer
-        run: ./vendor/bin/php-cs-fixer fix
+        run: ./vendor/bin/php-cs-fixer fix --dry-run --diff
 
   phpunit:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
       - uses: php-actions/composer@v1
-      - uses: php-actions/phpunit@v1
+
+      - name: Run phpunit
+        run: ./vendor/bin/phpunit tests --colors
